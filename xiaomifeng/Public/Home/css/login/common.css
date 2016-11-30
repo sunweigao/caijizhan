@@ -1,0 +1,27 @@
+body{ font-family: "ËÎÌו",arial;font-size:12px;margin:0; padding:0; line-height:160%; color:#444; background:url(../../images/register/1.jpg) no-repeat;background-size:  100%;color: red;}
+div{ list-style:none; margin:0; padding:0;}
+a{color: #444;text-decoration: none;}
+
+.w_978{ width:978px;}
+
+.m{ margin:0 auto;}
+
+.fl_l{ float:left;}
+.fl_r{ float:right;}
+
+input{ border:none;}
+
+.te_r{ text-align:right;}
+
+.ma_t10{ margin-top:10px; margin-left: 15%; }
+
+.clear{ clear:both;}
+
+a{blr:expression(this.onFocus=this.blur());}
+
+:focus{-moz-outline-style:none;}
+
+a{ outline:0;}
+img{ border:0px;}
+
+.btn{ background:url(../../images/register/yhzz.gif) no-repeat; background-position:0px -126px; color:#FFF; width:112px; height:34px; font-weight:700; cursor:pointer; }

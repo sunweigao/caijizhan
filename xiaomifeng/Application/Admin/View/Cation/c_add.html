@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+ <include file="Public/head" /><!--外部样式模版head-->
+<body>
+<include file="Public/header" /><!--头部模版header-->
+<div class="container clearfix">
+    <include file="Public/left" /><!--左侧模版left-->   
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="{:U('Index/Index')}">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="{:U('Cation/Index')}">分类管理</a><span class="crumb-step">&gt;</span><span>新增分类</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="" method="post" id="myform" name="myform" enctype="multipart/form-data" onsubmit="return check()">
+               
+                    <table class="insert-tab" width="100%">
+                        <tbody><tr>
+                            
+                        </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>添加的分类名称：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="title" size="50"  type="text" onblur="shitype()"> <span id='s_t'></span>
+                                </td>
+                               
+                            </tr>
+                           
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" onclick="shititle()" type="button">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->
+</div>
+</body>
+</html>
+<script type="text/javascript">
+function shitype() {
+    var title=document.getElementById('title').value;
+     var s_t=document.getElementById('s_t');
+     if (title=='')
+         {
+            s_t.innerHTML='分类不能为空';
+            s_t.style.color="red";
+         }
+}
+    function shititle () {
+        a=0
+        var title=document.getElementById('title').value;
+        var s_t=document.getElementById('s_t');
+        if (title!='')
+         {
+            var ajax = new XMLHttpRequest();
+            ajax.onreadystatechange = function() {
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    var response = ajax.responseText;
+                    //alert(response)
+                    if (response==1) 
+                    {
+                        
+                       window.location.href="{:U('Cation/index')}"
+                       
+                    }else
+                    {
+                        document.getElementById('s_t').innerHTML="分类已存在"
+                        document.getElementById('s_t').style.color="red"
+                    }
+                }
+            };
+            ajax.open('get',"{:U('Cation/c_name')}?type_name="+title);
+            ajax.send();
+        }
+        else
+        {
+            s_t.innerHTML='分类不能为空';
+            s_t.style.color="red";
+            return false;
+        }
+    }
+    function check () 
+    {
+        if (a) 
+        {
+            return true;    
+        }else
+        {
+            return false;
+        }
+    }
+
+</script>

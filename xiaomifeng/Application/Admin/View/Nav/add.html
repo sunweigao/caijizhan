@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+ <include file="Public/head" /><!--外部样式模版head-->
+<body>
+<include file="Public/header" /><!--头部模版header-->
+<div class="container clearfix">
+    <include file="Public/left" /><!--左侧模版left-->   
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="{:U('Index/Index')}">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="{:U('Nav/index')}">广告管理</a><span class="crumb-step">&gt;</span><span>新增广告</span></div>
+        </div>
+         <div class="result-wrap">
+            <div class="result-content">
+                <form action="{:U('Nav/insert')}" method="post" id="myform" name="myform" enctype="multipart/form-data" onsubmit="return fun()">
+               
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                            <tr>
+                                <th><i class="require-red">*</i>标题：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="nav_name" size="50" value="" type="text" onblur="checkTitle()"> <span id='s_title'></span>
+                                </td>
+                               
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>网址：</th>
+                                <td>
+                                    <input class="common-text required" id="href" name="nav_href" size="50" value="" type="text" onblur="checkHref()"> <span id='s_href'></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>作者：</th>
+                                <td><input type="hidden" name="username" value="<?php echo $_COOKIE['uname']?>"><span class="common-text" name="username" size="50" ><?php echo $_COOKIE['uname']?></span></td>
+                            </tr>
+                            <tr>
+                                <th>选择图片：</th>
+                                <td>
+                                        <input type="file" name="nav_image">
+                                 </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>开始时间</th>
+                                <td>
+                                    <input class="common-text required" id="starttime" name="nav_starttime" size="50" value="" type="text" onblur="checkStarttime()"> <span id='s_starttime'></span>
+                                </td>
+                               
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>结束时间</th>
+                                <td>
+                                    <input class="common-text required" id="endtime" name="nav_endtime" size="50" value="" type="text" onblur="checkEndtime()"> <span id='s_endtime'></span>
+                                </td>
+                               
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>排序</th>
+                                <td>
+                                    <input class="common-text required" id="limit" name="nav_limit" size="50" value="" type="text" onblur="checkLimit()"> <span id='s_limit'></span>
+                                </td>
+                               
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>是否展示</th>
+                                <td>
+                                    <input type="radio" name="nav_status" id="" value="0" checked="checked">是
+                                    <input type="radio" name="nav_status" id="" value="1">否
+                                    <span id='s_t'></span>
+                                </td>
+                               
+                            </tr>
+                             <th width="120"><i class="require-red">*</i>位置</th>
+                           <td>
+                               <select name="width_id" id="">
+                                <foreach name="data" item="cv">
+                                    <option value="{$cv.width_id}">
+                                    	{$cv.width_width}px x {$cv.width_light}px 
+                                    	<if condition="$cv.width_main eq '0'">
+                                    		上部
+                                    	<else />
+                                    		下部 
+                                    	</if>
+                                    </option>
+                                </foreach>
+                                </select>
+                            </td>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->
+</div>
+</body>
+</html>
+<script src="__PUBLIC__/Admin/js/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+
+	// 表单提交事件
+	function fun (){
+		return checkTitle()&&checkHref()&&checkStarttime()&&checkEndtime();
+	}
+
+	// 标题验证
+	function checkTitle () {
+		var title = $("#title").val();
+		if(title==''){
+			$("#s_title").html("<font color='red'>提示：标题不能为空</font>");
+			return false;
+		}else{
+			$("#s_title").html("<font color='green'>√</font>");
+			return true;
+		}
+	}
+
+	// 验证网址
+	function checkHref () {
+		var href = $("#href").val();
+		if(href==''){
+			$("#s_href").html("<font color='red'>提示：网址不能为空</font>");
+			return false;
+		}else{
+			$("#s_href").html("<font color='green'>√</font>");
+			return true;
+		}
+	}
+
+	// 验证开始时间
+	function checkStarttime () {
+		var starttime = $("#starttime").val();
+		if(starttime==''){
+			$("#s_starttime").html("<font color='red'>提示：开始时间不能为空</font>");
+			return false;
+		}else{
+			$("#s_starttime").html("<font color='green'>√</font>");
+			return true;
+		}
+	}
+
+	// 验证结束时间
+	function checkEndtime () {
+		var endtime = $("#endtime").val();
+		if(endtime==''){
+			$("#s_endtime").html("<font color='red'>提示：结束时间不能为空</font>");
+			return false;
+		}else{
+			$("#s_endtime").html("<font color='green'>√</font>");
+			return true;
+		}
+	}
+	// 验证排序
+	function checkLimit () {
+		var limit = $("#limit").val();
+		var reg = /^\d{0,}$/;
+		if(limit==''){
+			$("#s_limit").html("<font color='red'>提示：排序不能为空</font>");
+			return false;
+		}else if(reg.test(limit)){
+			$("#s_limit").html("<font color='green'>√</font>");
+			return true;
+		}else{
+			$("#s_limit").html("<font color='red'>提示：排序必须是数字</font>");
+			return false;
+		}
+	}
+
+</script>

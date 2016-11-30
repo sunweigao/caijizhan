@@ -1,0 +1,22 @@
+<header>
+  <nav id="nav">
+    <ul>
+      <li><a href="/" >网站首页</a></li>
+      <foreach name="cate" item="cate_list">
+      <li><a href="{:U('Index/type')}?id={$cate_list.cate_id}" target="" title="{$cate_list.cate_name}">{$cate_list.cate_name}</a></li>
+      </foreach>
+      <div class="viny" style="float: left;">
+        <dl>
+       
+          <dd class="icon-song" style="margin-left: 55px"><font style="margin-right: 200px">南方姑娘</font><span></span></dd>
+    
+            <audio src="__PUBLIC__/Home/images/nf.mp3" controls></audio>
+          </dd>
+          <!--也可以添加loop属性 音频加载到末尾时，会重新播放-->
+        </dl>
+      </div>
+    </ul>
+
+    <script src="__PUBLIC__/Home/js/silder.js"></script><!--获取当前页导航 高亮显示标题--> 
+  </nav>
+</header>

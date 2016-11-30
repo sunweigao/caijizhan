@@ -1,0 +1,3 @@
+#RewriteEngine on
+#RewriteCond %{HTTP_REFERER} !http:\/\/www.liujingwei.com|http:\/\/www.blog1.com
+#RewriteRule .*\.(jpg|jpeg|png|gif) logo.png [NC]

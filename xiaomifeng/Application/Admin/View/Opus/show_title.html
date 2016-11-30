@@ -1,0 +1,151 @@
+<!doctype html>
+<html >
+ <include file="Public/head" /><!--外部样式模版head-->
+
+<body id="ti">
+<include file="Public/header" /><!--头部模版header-->
+<div   class="container clearfix">
+<include file="Public/left" /><!--左侧模版left-->   
+    <!--/sidebar-->
+    <div  class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="{:U('Index/Index')}">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="{:U('Opus/opus_con')}">博文管理</a><span class="crumb-step">&gt;</span><span>{$data.title}</span></div>
+        </div>
+       
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                
+                <div class="result-content">
+                    <table>
+                    <tr>
+                        <td>作者:{$data.author}&nbsp;&nbsp;&nbsp;&nbsp;添加时间:{$data.add_time}&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                      
+                    </tr> 
+                    </table>
+                    <hr>
+                   <tr>内容:</tr>
+                    <tr><td>{$data.content}</td></tr>
+                   
+                   <img src="__ROOT__{$data.source_img}" width="600" height="400" alt="">
+                  
+                  
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+    <!--/main-->
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    function checktype() {
+
+       var type=document.getElementById('type').value
+       var tian=document.getElementById('tian').value
+       var ajax = new XMLHttpRequest();
+       ajax.onreadystatechange = function() {
+           if (ajax.readyState == 4 && ajax.status == 200) {
+               var response = ajax.responseText;
+               if (ajax.responseText==0) 
+                {
+                    alert('请填写要查询的关键字')
+                }else if (ajax.responseText==-1) 
+                {
+                    alert("没有相关数据,请重新输入")
+                }else
+                {
+                    document.getElementById('ti').innerHTML=response
+                }
+           }
+       };
+       ajax.open('get','{:U('Opus/checktype')}?type='+type+'&&tian='+tian);
+       ajax.send();
+    }
+    function del(id) {      
+        var ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function() 
+        {
+            if (ajax.readyState == 4 && ajax.status == 200) 
+            {
+                var response = ajax.responseText; 
+                
+                      document.getElementById('k_'+id).remove();
+                
+                  
+            }
+        }
+        ajax.open('get', "{:U('Opus/del')}?id="+id);
+        ajax.send();
+    }
+    function delall() {
+        var xuan=document.getElementsByName('xuan')
+        var arr=Array();
+        var j=0;
+        for (var i = 0; i < xuan.length; i++) 
+        {
+            if (xuan[i].checked==true) 
+            {
+                arr[j]=xuan[i].value;
+                j++;
+            }
+        }
+        str=arr.join(',')
+       
+        var ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function() 
+        {
+            if (ajax.readyState == 4 && ajax.status == 200) 
+            {
+                    var response = ajax.responseText;   
+                for (var i = 0; i < arr.length; i++)
+                {   //长度应该小于被选数组的长度                {
+                    document.getElementById('k_'+arr[i]).remove()//arr[i]数组中循环键值得到的值 从arr[j]=xuan[i].value;得到
+                }
+            }
+        };
+        ajax.open('get', "{:U('Opus/del')}?id="+str);
+        ajax.send();
+    }
+    function change(id) {
+        var ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function() {
+            if (ajax.readyState == 4 && ajax.status == 200) {
+                document.getElementById('zhi'+id).innerHTML=ajax.responseText;
+            }
+        };
+        ajax.open('get', "{:U('Opus/chang')}?id="+id);
+        ajax.send();
+    }
+     function fun(page){
+        var ajax=new XMLHttpRequest();
+        ajax.onreadystatechange=function(){
+            if(ajax.readyState==4){
+                document.getElementById('ti').innerHTML=ajax.responseText;
+            }
+        }
+        //ajax.open('get',"{:U('Opus/opus_con')}page="+page);
+        ajax.open('get',"{:U('Opus/opus_con')}?page="+page);
+        ajax.send();
+    }
+    function checkall() {
+      var xuan=document.getElementsByName('xuan')
+      var check_all=document.getElementById('check_all')
+      if (check_all.checked==true) 
+      {
+        for(i in xuan){
+
+            xuan[i].checked=true;
+        }
+        
+      }else {
+        for(i in xuan){
+          xuan[i].checked=false;
+        }
+      }
+        
+    }
+
+</script>

@@ -1,0 +1,48 @@
+[ 2016-10-22T15:44:37+08:00 ] 127.0.0.1 /index.php/Home/Index/search.html?s=5
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000326s ]
+ERR: 无法加载模块:5
+
+[ 2016-10-22T15:44:54+08:00 ] 127.0.0.1 /index.php/Home/Index/search.html?s=pp
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000326s ]
+ERR: 无法加载模块:Pp
+
+[ 2016-10-22T15:46:15+08:00 ] 127.0.0.1 /index.php/Home/Index/search.html?s=pp
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000601s ]
+ERR: 无法加载模块:Pp
+
+[ 2016-10-22T15:46:15+08:00 ] 127.0.0.1 /index.php/Home/Index/search.html?s=pp
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000392s ]
+ERR: 无法加载模块:Pp
+
+[ 2016-10-22T15:46:30+08:00 ] 127.0.0.1 /index.php/Home/Index/search.html?s=memcached
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000259s ]
+ERR: 无法加载模块:Memcached
+
+[ 2016-10-22T15:47:17+08:00 ] 127.0.0.1 /index.php/Home/Index/search.html?s=memcache
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000262s ]
+ERR: 无法加载模块:Memcache
+
+[ 2016-10-22T15:47:55+08:00 ] 127.0.0.1 /index.php/Home/Index/search.html?s=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000298s ]
+ERR: 无法加载模块:11
+
+[ 2016-10-22T15:48:27+08:00 ] 127.0.0.1 /index.php/Home/Index/search.html?s=pp
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000286s ]
+ERR: 无法加载模块:Pp
+

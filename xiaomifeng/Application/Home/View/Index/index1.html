@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+<head>
+<style>
+.sss{color:#FFF}
+</style>
+<meta charset="gb2312">
+<title>个人博客</title>
+<meta name="keywords" content="黑色模板,个人网站模板,个人博客模板,博客模板,css3,html5,网站模板" />
+<meta name="description" content="这是一个有关黑色时间轴的css3 html5 网站模板" />
+<link href="__PUBLIC__/Home/css/styles.css" rel="stylesheet">
+<link href="__PUBLIC__/Home/css/animation.css" rel="stylesheet">
+<!-- 返回顶部调用 begin -->
+<link rel="stylesheet" href="__PUBLIC__/Home/css/lanrenzhijia.css" media="all">
+<link href="__PUBLIC__/Home/css/lrtk.css" rel="stylesheet" />
+<script type="text/javascript" src="__PUBLIC__/Home/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/js.js"></script>
+
+<!-- 返回顶部调用 end-->
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+</head>
+<body>
+
+<include file="Public/header" />  <!-- 引入网页头部 -->
+
+<!--header end-->
+<div id="mainbody">
+  <div class="info">
+    <figure> <img src="__PUBLIC__/Home/images/art.jpg"  alt="Panama Hat">
+      <figcaption><strong>渡人如渡己，渡已，亦是渡</strong> 当我们被误解时，会花很多时间去辩白。 但没有用，没人愿意听，大家习惯按自己的所闻、理解做出判别，每个人其实都很固执。与其努力且痛苦的试图扭转别人的评判，不如默默承受，给大家多一点时间和空间去了解。而我们省下辩解的功夫，去实现自身更久远的人生价值。其实，渡人如渡己，渡已，亦是渡人。</figcaption>
+    </figure>
+    <div class="card">
+      <h1>我的名片</h1>
+      <p>网名：Mrs.Liu</p>
+      <p>职业：键盘毁灭师</p>
+      <p>电话：18500344675</p>
+      <p>qq：1091371645</p>
+      <p>微博：<a href="http://weibo.com/6040941972/profile?rightmod=1&wvr=6&mod=personinfo"><img src="__PUBLIC__/Home/images/weibo.jpg" alt="" width="15" height="15"></a></p>
+      <ul class="linkmore">
+        <li><a href="#" class="talk" title="给我留言"></a></li>
+      <!--   <li><a href="#" class="address" title="目录"></a></li>    -->
+         <li><a class="email" href="javascript:;" title="发消息"></a></li>
+        <li><a href="{:U('Photo/index')}" class="photos" title="生活照片"></a></li>
+        <!-- <li><a href="#" class="heart" title="关注我"></a></li> -->
+        <li><a class="btn btn-primary btn-large theme-login" href="javascript:;">给博主发送邮件</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <!--info end-->
+ <div class="theme-popover">
+     <div class="theme-poptit">
+          <a href="javascript:;" title="关闭" class="close">×</a>
+          <h3>交流 是一切的开始</h3>
+     </div>
+     <div class="theme-popbod dform">
+           <!-- <form class="theme-signin" name="loginform" action="" method="post"> -->
+                <ol style="margin-top:-60px;">
+                    <!--  <li><h4>你必须先登录！</h4></li> -->
+                    <div id="modifySuccess" class="alert alert-success alert-dismissable" style="width:100%;margin-left:600%;display:none;">
+          <strong>Success!</strong> 你发送邮件成功！
+        </div>
+                     <li><span id='email'><font size='3' color="red">*</font></span><strong>邮箱：</strong><input class="ipt" type="text" id='e' name="sd" value="1091371645@qq.com" size="20" onblur="you" /><font size='3' color="red" style="display:none;">邮箱不能为空</font></li>
+                     <li style="margin-top:10px;"><span id='content'><font size='3' color="red">*</font></span><strong>内容：</strong>
+                     <textarea name="content" id='TextArea1' rows="9" cols="28"></textarea>
+                     </br>
+                     <span id="textCount">还能输入&nbsp;<em>200</em>&nbsp;字</span>
+
+                     <!-- <input class="ipt" type="password" name="pwd" value="***" size="20" /> --></li>
+                     <li><input class="btn btn-primary" type="submit" id="submit" name="submit" value=" 发送 " /></li>
+                </ol>
+                
+           <!-- </form> -->
+     </div>
+</div>
+<div class="theme-popover-mask"></div>
+  <div class="blank"></div>
+
+  <div class="blogs">
+    <ul class="bloglist">
+    <foreach name="art" item="art_list">
+      <li>
+        <div class="arrow_box">
+          <div class="ti"></div>
+          <!--三角形-->
+          <div class="ci"></div>
+          <!--圆形-->
+          <h2 class="title">
+          <a href="{:U('Index/details')}?id={$art_list.art_id}" style='color:#FFF;font-size: 30px' title="查看详情">{$art_list.title}</a></h2>
+          <ul class="textinfo">
+            <a href="{$art_list.source_img}" title="查看原图">
+            <img src="{$art_list.thumb_img}" width="200" height="100"></a>
+            <p><a href="{:U('Index/details')}?id={$art_list.art_id}" style='color:#FFF;font-size: 20px' title="查看详情">{$art_list.art_desc}</a></p>
+          </ul>
+          
+           <ul class="details" >
+            <li class="likes"><a class="sss"style='color:#FFF;font-size: 20px ' id="like_{$art_list.art_id}" href="javascript:void(0)" onclick="like_fun({$art_list.art_id})" style="font-size: 20px" title="点赞">{$art_list.praises}</a><a id="likedesc_{$art_list.art_id}" href="javascript:void(0)" onclick="like_desc({$art_list.art_id})" style="color:red;display:none;font-size: 20px"  title="取消点赞"></a></li>
+            <li class="comments"></li>
+            <li class="icon-time"><a href="#">{$art_list.add_time}</a></li>
+          </ul>
+        </div>
+        <!--arrow_box end--> 
+      </li>
+    </foreach>
+    </ul>
+    <!--bloglist end-->
+
+    <aside>   
+     
+       <div class="tuijian">
+        <h2>热门文章</h2>
+        <ol>
+          <foreach name="hot" item="hv"> 
+          <li><span><strong>{$i++}</strong></span><a href="{:U('Index/details')}?id={$hv.art_id}">{$hv.title}</a></li> 
+          </foreach>
+        </ol>
+      </div>
+      <div class="search">
+        <form class="searchform" method="post" action="{:U('Index/index')}">
+          <input type="text" name="s" value="Search/标题" onfocus="this.value=''" onblur="this.value='Search'">
+        </form>
+      </div>
+    
+    </aside>
+  </div>
+  <!--blogs end--> 
+</div>
+<!-- 代码结束 -->
+</body>
+</html>
+<script src="__PUBLIC__/Home/js/jquery-1.7.2.js"></script>
+<script>
+$(function(){
+    $('#submit').click(function(){
+      var e = $("#e").val();            
+      var TextArea1 = $("#TextArea1").val();
+      $.post("{:U('Index/email')}", {e:e, TextArea1:TextArea1}, function(data) {
+          $("#modifySuccess").css({'display':'inline'});
+      });
+    })
+    $("#TextArea1").bind({  
+         "keyup": function (e) {   
+             $("#cl").empty();    
+             $("#cl").append(smartLen($(this).val()));  
+             checkWords($(this).val());  
+               }  
+          });
+      });  
+      var urlReg ={  
+          "urlRegText":"((news|telnet|nttp|file|http|ftp|https)://){1}(([-A-Za-z0-9]+(\\.[-A-Za-z0-9]+)*(\\.[-A-Za-z]{2,5}))|([0-9]{1,3}(\\.[0-9]{1,3}){3}))(:[0-9]*)?(/[-A-Za-z0-9_\\$\\.\\+\\!\\*\\(\\),;:@&=\\?/~\\#\\%]*)*"  
+      };  
+      // 字符串长度  
+      function smartLen(str) {  
+          str = str.replace(/(^[\s\n]+)|([\s\n]+$)/,"").replace(/[\s\n]+/g," ");  
+          str = str.replace(new RegExp(urlReg.urlRegText, "gi"), new Array(12).join("aa"));  
+          return Math.ceil(($.trim(str.replace(/[^\u0000-\u00ff]/g, "aa")).length) / 2);  
+      }  
+      function checkWords(content){  
+          var len = 200-smartLen(content);
+            if (len < 0) { 
+            var num=$("#TextArea1").val().substr(0,200);   
+            $("#TextArea1").val(num);   
+          } else {  
+              $('#textCount').html('还能输入&nbsp;<em>' + len + '</em>&nbsp;字');     
+          $("#subbtn").attr("disabled",false);          
+          }  
+      }
+jQuery(document).ready(function($) {
+  $('.theme-login').click(function(){
+    $('.theme-popover-mask').fadeIn(100);
+    $('.theme-popover').slideDown(200);
+  })
+  $('.theme-poptit .close').click(function(){
+    $('.theme-popover-mask').fadeOut(100);
+    $("#TextArea1").html('');
+    $('.theme-popover').slideUp(200);
+  })
+
+})
+   aa=0
+    function like_fun(id)
+    {
+        var ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function()
+        {
+            if(ajax.readyState==4)
+            { 
+
+              if(ajax.responseText)
+              {
+                  var count = document.getElementById('like_'+id).innerHTML;
+                  var c = parseInt(count);
+                  aa=document.getElementById('like_'+id).innerHTML =c+1;
+                  document.getElementById('like_'+id).style.display='none';
+                  aa=document.getElementById('likedesc_'+id).innerHTML =c+1;
+                  document.getElementById('likedesc_'+id).style.display='block';
+              }
+            }
+        }
+        ajax.open('get',"{:U('Index/likes')}?art_id="+id);
+        ajax.send(null);
+    }
+   bb=0
+    //取消点赞
+    function like_desc(id)
+    {
+      var ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function()
+        {
+            if(ajax.readyState==4 )
+            { 
+
+              if(ajax.responseText)
+              {
+                  var count = document.getElementById('like_'+id).innerHTML;
+                  var c = parseInt(count);
+                  bb= document.getElementById('like_'+id).innerHTML =c-1;
+                  document.getElementById('like_'+id).style.display='block';
+                  bb= document.getElementById('likedesc_'+id).innerHTML =c-1;
+                  document.getElementById('likedesc_'+id).style.display='none';
+              }
+            }
+        }
+        ajax.open('get',"{:U('Index/likedesc')}?art_id="+id);
+        ajax.send(null);
+    }
+    // function words_deal()
+    // {
+    // var curLength=$("#TextArea1").val().length;
+    // if(curLength>200)
+    // {
+    // var num=$("#TextArea1").val().substr(0,200);
+    // $("#TextArea1").val(num);
+    // //alert("超过字数限制，多出的字将被截断！" );
+    // }
+    // else
+    // {
+    // $("#textCount").text(200-$("#TextArea1").val().length);
+    // }
+    // } 
+</script>

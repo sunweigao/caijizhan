@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+ <include file="Public/head" /><!--外部样式模版head-->
+<body>
+<include file="Public/header" /><!--头部模版header-->
+<div class="container clearfix">
+	<include file="Public/left" /><!--左侧模版left-->	 
+    <!--/sidebar-->
+    <div class="main-wrap">
+        
+        <div class="result-wrap">
+            <div class="result-title">
+                <h1>快捷操作</h1>
+            </div>
+            <div class="result-content">
+                <div class="short-wrap">                    
+                    <a href="{:U('Opus/opus_con_add')}"><i class="icon-font">&#xe005;</i>一键采集</a>
+                </div>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-title">
+                <h1>系统基本信息</h1>
+            </div>
+            <div class="result-content">
+                <ul class="sys-info-list">
+                    <li>
+                        <label class="res-lab">操作系统</label><span class="res-info">WINNT</span>
+                    </li>
+                    <li>
+                        <label class="res-lab">运行环境</label><span class="res-info">Apache/2.4.10 (Win64) PHP/5.5</span>
+                    </li>
+                    <li>
+                        <label class="res-lab">PHP运行方式</label><span class="res-info">apache2handler</span>
+                    </li>
+                    <li>
+                        <label class="res-lab">静静设计-版本</label><span class="res-info">v-0.1</span>
+                    </li>
+                    <li>
+                        <label class="res-lab">上传附件限制</label><span class="res-info">2M</span>
+                    </li>
+                    <li>
+                        <label class="res-lab">北京时间</label><span class="res-info"><?php echo date('Y-m-d H:i:s')?></span>
+                    </li>
+                    <li>
+                        <label class="res-lab">服务器域名/IP</label><span class="res-info">www.liu.com[ 127.0.0.1 ]</span>
+                    </li>
+                    <li>
+                        <label class="res-lab">Host</label><span class="res-info">127.0.0.1</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    <!--/main-->
+</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+(function(){
+	var adx={
+		commom:{},
+		core:{}	
+	};
+	adx.commom={
+		adxJsonp:function(url){
+			var oS=document.createElement('script');
+			oS.src=url;	
+			var oHead=document.getElementsByTagName('head')[0];
+			oHead.appendChild(oS);
+		},
+		generateCookie:function(){
+			return 'HAIYUNX_'+Math.random().toString(36).substring(2)+new Date().getTime();
+		},
+		getWinWidth:function(){
+			return document.documentElement.clientWidth;	
+		},
+		getWinHeight:function(){
+			return document.documentElement.clientHeight;	
+		},
+		sourceurl:function(){
+			return encodeURIComponent(document.referrer);
+		},
+		targetUrl:function(){
+			return encodeURIComponent(document.location);	
+		},
+        setCookie:function(value){  
+                var oDate = new Date();
+                oDate.setTime(oDate.getTime() + 30*24*60*60*1000);
+                document.cookie='haiyunpmp' + "=" + value + ";expires=" + oDate.toGMTString()+";path=/";
+        },
+        getCookie:function(){
+					var arr,
+					reg=new RegExp("(^| )"+'haiyunpmp'+"=([^;]*)(;|$)");
+					if(arr=document.cookie.match(reg))
+					return unescape(arr[2]);
+					else
+					return null;				
+        }	
+	};
+	adx.core={
+		getFromData:function(pid,hypid){
+			var jsonp=adx.commom.adxJsonp,
+				sourceurl=adx.commom.sourceurl(),
+				targeturl=adx.commom.targetUrl(),
+				sW=adx.commom.getWinWidth(),
+				sH=adx.commom.getWinHeight(),
+				g_cookie=adx.commom.generateCookie;
+			
+			var getCookie=adx.commom.getCookie;
+			var setCookie=adx.commom.setCookie;
+			var cookie_sign='';
+			if(!getCookie()){
+				cookie_sign=g_cookie();
+				setCookie(cookie_sign);
+				var parameter='{"publisherid":"' + pid + '","hypid":"' + hypid + '","sourceurl":"'+sourceurl+'","targeturl":"'+targeturl+'","cookie_sign":"'+cookie_sign+'"}';
+			}else{
+				cookie_sign=getCookie();
+				var parameter='{"publisherid":"' + pid + '","hypid":"' + hypid + '","sourceurl":"'+sourceurl+'","targeturl":"'+targeturl+'","cookie_sign":"'+cookie_sign+'"}';
+			}
+			document.write('<script src="http://hypmp.haiyunx.com/PMPPush/huzhong_huzhongjs.gif?callback=haiyunAdxSucc&requeststr='+encodeURIComponent(parameter)+'"></scr'+'ipt>');
+			document.writeln('<img width="1px" style="display:none;" height="1px" src="http://cm.fastapi.net/?dspid=100030&x=1&noredirect=1&dspuid='+cookie_sign+'" />');
+		}	
+	};
+	window.haiyunAdxSucc=function(json){  //adx回调函数
+		var url=json.jscode;
+		try{
+			if(url.indexOf('</script>')!=-1){
+				document.writeln("<div>"+url+"</div>");	
+			}else{
+				document.writeln("<div><script src=\'"+url+"\'></script></div>");
+			}
+		}catch(e){}
+	}
+	adx.core.getFromData("1009731","30169"); 
+})();
